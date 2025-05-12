@@ -691,7 +691,7 @@ wheels = [
 
 [[package]]
 name = "typerdrive"
-version = "0.5.1"
+version = "0.5.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "httpx" },
@@ -704,9 +704,9 @@ dependencies = [
     { name = "typer" },
     { name = "typer-repyt" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/5d/84/5af82438c220a6e1f45c84cbec74dafde3ddf1b8f2adc6d96f9ce409a029/typerdrive-0.5.1.tar.gz", hash = "sha256:384d84f76d7e0b2b76ccb23147b94c7b297df3eb6b1f0e98923bea3843fe0a01", size = 198346, upload-time = "2025-05-12T19:17:30.713Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/67/b5/931c3cde67ede19cad0b9faf302b75922669821d4cd4db1d40b17617adf5/typerdrive-0.5.2.tar.gz", hash = "sha256:a85a98b8d67e88f284e0ac49f52dfa20b6a1b9472535ad3ed8dcee79e82447b3", size = 198620, upload-time = "2025-05-13T00:01:30.487Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b8/b5/868aad4a3276b62a7d508ec55fb0af626931cb83c2cca7df9a39bfd45efb/typerdrive-0.5.1-py3-none-any.whl", hash = "sha256:b682e45a6953b58d177b15c793918799c9af502522624dd7e145b5d92240ed93", size = 37240, upload-time = "2025-05-12T19:17:29.363Z" },
+    { url = "https://files.pythonhosted.org/packages/79/53/de0a3e3ca270f35df3c1ef9c2b1abf62cf9b6dc637066fd304b6a2eb507c/typerdrive-0.5.2-py3-none-any.whl", hash = "sha256:84438ebb5f68c74c5f5a5d4b33a75e950b6f20cb20f086f6b3725d10d50cf932", size = 37288, upload-time = "2025-05-13T00:01:28.859Z" },
 ]
 
 [[package]]
