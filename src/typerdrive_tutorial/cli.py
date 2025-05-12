@@ -1,11 +1,14 @@
 from enum import StrEnum, auto
+from typing import cast
 
-import httpx
 import typer
 from loguru import logger
+from pydantic import BaseModel
 from typerdrive import (
+    TyperdriveClient,
     TyperdriveError,
     add_logs_subcommand,
+    attach_client,
     attach_logging,
     handle_errors,
     log_error,
@@ -22,27 +25,31 @@ class TutorialError(TyperdriveError):
     pass
 
 
+class APIResponse(BaseModel):
+    message: str
+
+
 app = typer.Typer()
 add_logs_subcommand(app)
-
 
 
 @app.command()
 @handle_errors("Failed to access the API", do_except=log_error)
 @attach_logging()
-def access(ctx: typer.Context, endpoint: Endpoint):
+@attach_client(api="http://localhost:8000")
+def access(ctx: typer.Context, endpoint: Endpoint, api: TyperdriveClient):
     logger.debug(f"Attempting to access api {endpoint=}")
-    response = httpx.get(f"http://localhost:8000/{endpoint}")
-    logger.debug(f"Got {response.status_code=}")
-    TutorialError.require_condition(
-        response.status_code == 200,
-        f"Expected status code 200, but got {response.status_code}",
+    response = cast(
+        APIResponse,
+        api.get_x(
+            endpoint,
+            expected_status=200,
+            response_model=APIResponse,
+        ),
     )
-    message = response.json()["message"]
     terminal_message(
-        message,
+        response.message,
         subject="Successfully connected to API",
-        footer=f"Status Code: {response.status_code}",
     )
 
 @app.command()
