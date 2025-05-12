@@ -1,0 +1,31 @@
+[project]
+name = "typerdrive-tutorial"
+version = "0.1.0"
+description = "A demonstration project showing how to use typerdrive"
+authors = [
+    {name = "Tucker Beck", email ="tucker.beck@gmail.com"},
+]
+readme = "README.md"
+license-files = ["LICENSE.md"]
+
+requires-python = "~=3.13"
+dependencies = [
+    "armasec",
+    "click<8.2",  # This is a ridiculous consequence of: https://github.com/fastapi/typer/discussions/121k5
+    "fastapi[standard]~=0.115",
+    "loguru~=0.7",
+    "typer~=0.15",
+    "typerdrive~=0.5",
+]
+
+
+[project.scripts]
+typerdrive-tutorial = "typerdrive_tutorial.cli:app"
+
+
+[tool.uv]
+package = true
+
+
+[tool.uv.sources]
+armasec = { path = "../../omnivector/armasec", editable = true }
