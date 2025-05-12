@@ -2,7 +2,15 @@ from enum import StrEnum, auto
 
 import httpx
 import typer
-from typerdrive import terminal_message, handle_errors, TyperdriveError
+from loguru import logger
+from typerdrive import (
+    TyperdriveError,
+    add_logs_subcommand,
+    attach_logging,
+    handle_errors,
+    log_error,
+    terminal_message,
+)
 
 
 class Endpoint(StrEnum):
@@ -15,12 +23,17 @@ class TutorialError(TyperdriveError):
 
 
 app = typer.Typer()
+add_logs_subcommand(app)
+
 
 
 @app.command()
-@handle_errors("Failed to access the API")
-def access(endpoint: Endpoint):
+@handle_errors("Failed to access the API", do_except=log_error)
+@attach_logging()
+def access(ctx: typer.Context, endpoint: Endpoint):
+    logger.debug(f"Attempting to access api {endpoint=}")
     response = httpx.get(f"http://localhost:8000/{endpoint}")
+    logger.debug(f"Got {response.status_code=}")
     TutorialError.require_condition(
         response.status_code == 200,
         f"Expected status code 200, but got {response.status_code}",
