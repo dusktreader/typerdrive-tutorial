@@ -10,7 +10,7 @@ license-files = ["LICENSE.md"]
 
 requires-python = "~=3.13"
 dependencies = [
-    "armasec",
+    "armasec~=3.0",
     "click<8.2",  # This is a ridiculous consequence of: https://github.com/fastapi/typer/discussions/121k5
     "fastapi[standard]~=0.115",
     "loguru~=0.7",
@@ -25,7 +25,3 @@ typerdrive-tutorial = "typerdrive_tutorial.cli:app"
 
 [tool.uv]
 package = true
-
-
-[tool.uv.sources]
-armasec = { path = "../../omnivector/armasec", editable = true }
