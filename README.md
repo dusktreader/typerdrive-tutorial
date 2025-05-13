@@ -33,4 +33,4 @@ uv run typerdrive-tutorial
 ## Docs
 
 If you want to read the tutorial, please refer to my blog article
-["Introducing Typerdrive"](https://blog.dusktreader.dev) (TODO: put the full URL here when it's published.
+["Introducing Typerdrive"](https://blog.dusktreader.dev/2025/05/13/introducing-typerdrive-boost-your-command-line-workflows-to-lightspeed/)
