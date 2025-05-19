@@ -20,7 +20,7 @@ To run the API that the CLI connects to, run:
 
 
 ```
-uv run fastapi dev src/typerdrive-tutorial/api.py
+uv run fastapi dev src/typerdrive_tutorial/api.py
 ```
 
 To run the CLI, run:
